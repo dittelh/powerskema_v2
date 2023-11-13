@@ -1,13 +1,30 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-card class="indholdCard">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">login</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+  <ion-card-header>
+    <h1>
+      Velkommen administrator!
+    </h1>
+  </ion-card-header>
+  <ion-card-header>
+    <h5>
+      Log ind for at slette/tilføje begivenheder i Ztudieplanen
+    </h5>
+  </ion-card-header>
+  
+  
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="E-mail"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Adgangskode">
+    </ion-input>
+  </ion-item>
+</ion-list>
+
+  <ion-card-content>
+    <ion-button [routerLink]="['/admin']">Log ind</ion-button>
+  </ion-card-content>
+</ion-card>
