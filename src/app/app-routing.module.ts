@@ -14,6 +14,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'admin',
+    loadChildren: () =>
+    import('./admin/admin.module').then((m) => m.AdminPageModule),
+  },
+  {
     path: 'home-work',
     loadChildren: () =>
       import('./overview/home-work/home-work.module').then(
@@ -33,10 +38,22 @@ const routes: Routes = [
       import('./overview/events/events.module').then((m) => m.EventsPageModule),
   },
   {
+    path: 'add-event',
+    loadChildren: () =>
+      import('./components/add-event/add-event.component').then(
+        (m) => m.AddEventComponent
+      ),
+  },
+  {
     path: 'alle/:selectedButton',
     loadChildren: () =>
       import('./overview/alle/alle.module').then((m) => m.AllePageModule),
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+  },
+
 ];
 
 @NgModule({
