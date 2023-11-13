@@ -15,6 +15,8 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 import * as firebase from '@firebase/app';
+import { SharedModule } from './components/shared.module';
+import { FormsModule } from '@angular/forms';
 firebase.initializeApp(environment.firebase);
 
 @NgModule({
@@ -25,6 +27,8 @@ firebase.initializeApp(environment.firebase);
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    SharedModule,
+    FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),

@@ -97,38 +97,6 @@ export class HomePage implements OnInit {
     }
   };
 
-  startTimeChanged(value: any) {
-    this.newEvent.startTime = value;
-    this.formattedSart = format(parseISO(value), 'HH:mm, MMM d, yyyy');
-  }
-
-  endTimeChanged(value: any) {
-    this.newEvent.endTime = value;
-    this.formattedend = format(parseISO(value), 'HH:mm, MMM d, yyyy');
-  }
-  addNewEvent() {
-    const addEvent: Event = {
-      title: this.newEvent.title,
-      allDay: this.newEvent.allDay,
-      startTime: new Date(this.newEvent.startTime),
-      endTime: new Date(this.newEvent.endTime),
-      subject: this.newEvent.subject,
-      description: this.newEvent.description,
-    };
-    this.eventService.addEvent(addEvent);
-
-    this.newEvent = {
-      title: '',
-      allDay: false,
-      startTime: new Date(),
-      endTime: new Date(),
-      category: '',
-      subject: '',
-      description: '',
-    };
-    this.modal.dismiss();
-  }
-
   onEventSelected(event: any) {
     console.log('Event: selected:', event.subject);
 

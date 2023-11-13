@@ -37,30 +37,30 @@ export class EventsService {
   }
 
   getApiEvents() {
-    this.http
-      .get<{ message: string; events: Event[] }>(
-        'http://localhost:3000/api/events'
-      )
-      .pipe(
-        map((data) => {
-          return data.events.map((event) => {
-            return {
-              eventid: event.eventid,
-              title: event.title,
-              allDay: event.allDay,
-              startTime: new Date(event.startTime),
-              endTime: new Date(event.endTime),
-              category: event.category,
-              subject: event.subject,
-              description: event.description,
-            };
-          });
-        })
-      )
-      .subscribe((transformedBlog) => {
-        this.events = transformedBlog;
-        this.eventUpdate.next(this.events);
-      });
+    // this.http
+    //   .get<{ message: string; events: Event[] }>(
+    //     'http://localhost:3000/api/events'
+    //   )
+    //   .pipe(
+    //     map((data) => {
+    //       return data.events.map((event) => {
+    //         return {
+    //           eventid: event.eventid,
+    //           title: event.title,
+    //           allDay: event.allDay,
+    //           startTime: new Date(event.startTime),
+    //           endTime: new Date(event.endTime),
+    //           category: event.category,
+    //           subject: event.subject,
+    //           description: event.description,
+    //         };
+    //       });
+    //     })
+    //   )
+    //   .subscribe((transformedBlog) => {
+    //     this.events = transformedBlog;
+    //     this.eventUpdate.next(this.events);
+    //   });
   }
 
   UpdateEventListner() {

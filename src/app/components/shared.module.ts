@@ -4,18 +4,21 @@ import { IonicModule } from '@ionic/angular';
 import { HomeWorkPage } from '../overview/home-work/home-work.page';
 import { EventsPage } from '../overview/events/events.page';
 import { AssignmentPage } from '../overview/assignment/assignment.page';
+import { AddEventComponent } from './add-event/add-event.component';
+import { FormsModule } from '@angular/forms';
   
- 
 @NgModule({
+  imports: [
+    IonicModule,
+    CommonModule,
+    FormsModule,
+  ],
   declarations: [
     HomeWorkPage,
     EventsPage,
-    AssignmentPage
+    AssignmentPage,
+    AddEventComponent
   ],
-  imports: [
-    IonicModule,
-    CommonModule
-  ],
-  exports: [HomeWorkPage, EventsPage, AssignmentPage]
+  exports: [HomeWorkPage, EventsPage, AssignmentPage, AddEventComponent]
 })
 export class SharedModule { }

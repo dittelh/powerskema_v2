@@ -5,16 +5,37 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list>
-    <ion-item *ngFor="let event of events">
-      {{ event.title }}
-      <ion-icon (click)="deleteAlert(event)" slot="end" name="trash"></ion-icon>
-    </ion-item>
-  </ion-list>
+  <ion-card class="eventCard">
+    <ion-card-header>
+      <ion-card-title class="eventCardTitle">Adminpanel</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p class="eventP">
+        Her kan du se, slette, tilføje og rette i begivenheder.
+      </p>
+      <ion-list>
+        <ion-item class="eventItem" *ngFor="let event of events">
+          {{ event.title }}
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button id="indPutModal">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+          <ion-button slot="end" class="editBtn" [id]="['open-modal-'+event.id]" expand="block">
+            <ion-icon
+              class="eventIcons editIcon"
+              name="ellipsis-horizontal"
+            ></ion-icon>
+          </ion-button>
+
+          <ion-icon
+            class="eventIcons"
+            (click)="deleteAlert(event)"
+            slot="end"
+            name="trash"
+          ></ion-icon>
+
+          <app-edit-event [event]="event"></app-edit-event>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <app-add-event modalId="1" (newItemEvent)="addItem($event)"></app-add-event>
 </ion-content>
