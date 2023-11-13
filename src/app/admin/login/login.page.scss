@@ -3,6 +3,10 @@
     background: #222423;
   }
 
+h1 {
+    color: #27c499;
+  }
+
   .logIndButton {
     display: flex;
     flex-direction: column;
@@ -12,11 +16,9 @@
 
   .logIndInfo {
     margin: 0px 10px 0px 10px;
-  }
-/* 
-  .logIndFarve {
-    width: 100%;
-    background-color: #222423 !important;
-  } */
+    --border-style: none;
+  } 
 
- 
+  .logIndFarve::part(native) {
+    background: #3f3f3f !important;
+  } 
