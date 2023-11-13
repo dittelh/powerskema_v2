@@ -1,4 +1,14 @@
 <ion-app>
+  <ion-header>
+    <ion-toolbar class="header" color="darkgrey">
+      <ion-buttons slot="start">
+        <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+      <ion-title [routerLink]="['/']" >ZtudiePlan</ion-title>
+      <ion-icon [routerLink]="['/admin']" slot="end" name="person"></ion-icon>
+    </ion-toolbar>
+  </ion-header>
+
   <ion-menu menuId="main-menu" contentId="main">
     <ion-content class="menu-container">
       <ion-list class="menu-list">

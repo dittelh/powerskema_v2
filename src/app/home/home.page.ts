@@ -7,6 +7,7 @@ import { format, parseISO } from 'date-fns';
 import { IonModal } from '@ionic/angular/common';
 import { Event, EventsService } from '../services/events.service';
 import { Subscription, forkJoin } from 'rxjs';
+import { AddEventComponent } from '../components/add-event/add-event.component';
 
 @Component({
   selector: 'app-home',
