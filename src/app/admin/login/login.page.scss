@@ -25,4 +25,9 @@ h5 {
 
   .logIndFarve::part(native) {
     background: #3f3f3f !important;
+    color: white;
   } 
+
+  .sc-ion-input-ios-h {
+    --placeholder-color: #000;
+  }
