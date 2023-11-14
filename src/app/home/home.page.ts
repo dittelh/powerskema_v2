@@ -1,13 +1,11 @@
 import { Component, ViewChild, ViewEncapsulation, OnInit } from '@angular/core';
 import { CalendarMode } from 'ionic7-calendar/calendar.interface';
 import { CalendarComponent } from 'ionic7-calendar';
-import { IonRouterOutlet } from '@ionic/angular';
 
-import { format, parseISO } from 'date-fns';
+import { format } from 'date-fns';
 import { IonModal } from '@ionic/angular/common';
-import { Event, EventsService } from '../services/events.service';
-import { Subscription, forkJoin } from 'rxjs';
-import { AddEventComponent } from '../components/add-event/add-event.component';
+import { Subscription } from 'rxjs';
+import { Event, EventsMySQLService } from '../services/eventsMySQL.service';
 
 @Component({
   selector: 'app-home',
@@ -35,6 +33,8 @@ export class HomePage implements OnInit {
     description: '',
   };
   eventList: Event[] = [];
+  events: Event[] | any;
+
   showStart = false;
   showEnd = false;
   formattedSart: string;
@@ -51,25 +51,12 @@ export class HomePage implements OnInit {
   @ViewChild('modal') modal!: IonModal;
 
   constructor(
-    private ionRouterOutlet: IonRouterOutlet,
-    private eventService: EventsService
+    private eventsService: EventsMySQLService
   ) {
-    this.presentingElemement = ionRouterOutlet.nativeEl;
   }
 
   ngOnInit() {
-    this.eventService.getDateBaseEvents().subscribe((res: Event[]) => {
-      this.eventList = res;
-      this.eventSource.push(...this.eventList);
-      this.myCalendar.loadEvents();
-    });
-    this.eventService.getApiEvents();
-    this.eventSubsription = this.eventService
-      .UpdateEventListner()
-      .subscribe((events: Event[]) => {
-        this.eventSource = events;
-        // console.log(this.eventSource);
-      });
+    this.retrieveEvents();
   }
 
   previousMonth() {
@@ -105,5 +92,36 @@ export class HomePage implements OnInit {
 
   checkIsDayView() {
     this.isDayView = this.calendar.mode === 'day';
+  }
+
+  
+  retrieveEvents(): void {
+    this.eventsService.getAll().subscribe(
+      (data) => {
+        this.events = data;
+        this.updateEvents();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  addItem(newEvent: string) {
+    this.events.push(newEvent);
+    this.updateEvents();
+  }
+
+  updateEvents() {
+    for (let i = 0; i < this.events.length; i++) {
+      const event = this.events[i];
+      const startTime = new Date(event.startTime);
+      const endTime = new Date(event.endTime);
+      this.events[i].startTime = startTime;
+      this.events[i].endTime = endTime;   
+    }
+            
+    this.eventSource = this.events;
+    this.myCalendar.loadEvents();
   }
 }
