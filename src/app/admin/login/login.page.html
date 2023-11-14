@@ -1,0 +1,24 @@
+<ion-card class="indholdCard">
+
+  <ion-card-header>
+    <ion-label>
+      <h1>Velkommen, administrator!</h1>
+      <h5>Log ind for at ændre begivenheder i Ztudieplan</h5>
+    </ion-label>
+  </ion-card-header>
+  
+  
+  <ion-list no-lines lines="none" class="logIndInfo">
+    <ion-item class="logIndFarve">
+      <ion-input lines="none" placeholder="E-mail"></ion-input>
+    </ion-item>
+    <ion-item class="logIndFarve">
+      <ion-input [counter]="true" maxlength="20" type="password" placeholder="Adgangskode">
+    </ion-input>
+  </ion-item>
+</ion-list>
+
+  <ion-card-content class="logIndButton">
+    <ion-button [routerLink]="['/admin']">Log ind</ion-button>
+  </ion-card-content>
+</ion-card>
