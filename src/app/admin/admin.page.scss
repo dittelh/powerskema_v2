@@ -1,4 +1,36 @@
-.addIcon{
-    font-size: 3rem;
-    color: white;
+.addIcon {
+  font-size: 3rem;
+  color: var(--ion-color-light);
+}
+
+.eventItem::part(native) {
+  padding-inline-start: 0;
+  --inner-padding-end: 0;
+  background: var(--ion-color-darkgrey);
+  color: var(--ion-color-light);
+}
+
+.eventCard {
+  background: var(--ion-color-darkgrey);
+  color: var(--ion-color-secondary);
+}
+
+.eventCardTitle {
+  color: var(--ion-color-secondary);
+}
+
+.eventIcons {
+  color: var(--ion-color-primary);
+}
+
+.editIcon {
+  padding-right: 0.5rem;
+}
+
+.eventP {
+  padding-bottom: 1rem;
+}
+
+.editBtn::part(native) {
+  background: none;
 }

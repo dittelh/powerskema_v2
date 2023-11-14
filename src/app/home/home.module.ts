@@ -7,7 +7,9 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { NgCalendarModule } from 'ionic7-calendar';
 import localeDa from '@angular/common/locales/da';
+import { SharedModule } from '../components/shared.module';
 registerLocaleData(localeDa, 'da-DK');
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,7 @@ registerLocaleData(localeDa, 'da-DK');
     IonicModule,
     HomePageRoutingModule,
     NgCalendarModule,
+    SharedModule,
   ],
   declarations: [HomePage],
   providers: [{ provide: LOCALE_ID, useValue: 'da-DK' }],

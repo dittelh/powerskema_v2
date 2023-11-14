@@ -47,7 +47,7 @@ export class AdminPage implements OnInit {
 
   async deleteAlert(event: any) {
     const alert = await this.alertController.create({
-      header: 'Vil du slette ' + event.title + '?',
+      header: 'Vil du slette "' + event.title + '"?',
       buttons: [
         {
           text: 'Nej',
@@ -57,6 +57,7 @@ export class AdminPage implements OnInit {
         },
         {
           text: 'Ja',
+          cssClass: 'alert-button-cancel',
           handler: () => {
             this.deleteEvent(event);
           },
@@ -69,11 +70,64 @@ export class AdminPage implements OnInit {
   deleteEvent(event: any): void {
     this.eventsService.delete(event.id).subscribe(
       (data) => {
-        this.retrieveEvents()
+        this.retrieveEvents();
       },
       (error) => {
         console.log(error);
       }
-    )
+    );
+  }
+
+  addItem(newEvent: string) {
+    this.events.push(newEvent);
+  }
+
+  async editAlert(event: any) {
+    // const alert = await this.alertController.create({
+    //   header: 'Rediger "' + event.title + '"',
+    //   inputs: [
+    //     {
+    //       placeholder: 'Titel',
+    //       value: event.title
+    //     },
+    //     {
+    //       placeholder: 'Emne',
+    //       value: event.category,
+    //       attributes: {
+    //         maxlength: 15,
+    //       },
+    //     },
+    //     {
+    //       type: 'radio',
+    //       label: 'Kategori',
+    //       value: event.category,
+    //     },
+    //     {
+    //       type: 'textarea',
+    //       placeholder: 'Beskrivelse',
+    //       value: event.description
+    //     },
+    //   ],
+    //   buttons: [
+    //     {
+    //       text: 'Annuller',
+    //       handler: () => {
+    //         console.log('nej');
+    //       },
+    //     },
+    //     {
+    //       text: 'Gem',
+    //       cssClass: 'alert-button-cancel',
+    //       handler: () => {
+    //         this.editEvent(event);
+    //       },
+    //     },
+    //   ],
+    // });
+    // await alert.present();
+  }
+
+  editEvent(event: any): void {
+
   }
 }
