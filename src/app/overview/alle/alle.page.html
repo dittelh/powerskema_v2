@@ -37,19 +37,19 @@
       </ion-card-title>
     </ion-card-header>
 
-    <ng-container *ngFor="let e of eventList">
-      <div *ngIf="selectedButton==='lektier' && e.category === 'Lektier'">
-        <app-home-work [item]="e.title" [endTime]="e.endTime" />
+    <ng-container *ngFor="let event of events">
+      <div *ngIf="selectedButton==='lektier' && event.category === 'Lektier'">
+        <app-home-work [item]="event.title" [endTime]="event.endTime" />
       </div>
       <div>
         <app-assignment
-          *ngIf="selectedButton==='afleveringer' && e.category === 'Aflevering'"
-          [item]="e.title "
-          [endTime]="e.endTime"
+          *ngIf="selectedButton==='afleveringer' && event.category === 'Afleveringer'"
+          [item]="event.title "
+          [endTime]="event.endTime"
         />
       </div>
-      <div *ngIf="selectedButton==='events' && e.category === 'Events'">
-        <app-events [item]="e.title" [endTime]="e.endTime" />
+      <div *ngIf="selectedButton==='events' && event.category === 'Events'">
+        <app-events [item]="event.title" [endTime]="event.endTime" />
       </div>
     </ng-container>
   </ion-card>

@@ -82,51 +82,6 @@ export class AdminPage implements OnInit {
     this.events.push(newEvent);
   }
 
-  async editAlert(event: any) {
-    // const alert = await this.alertController.create({
-    //   header: 'Rediger "' + event.title + '"',
-    //   inputs: [
-    //     {
-    //       placeholder: 'Titel',
-    //       value: event.title
-    //     },
-    //     {
-    //       placeholder: 'Emne',
-    //       value: event.category,
-    //       attributes: {
-    //         maxlength: 15,
-    //       },
-    //     },
-    //     {
-    //       type: 'radio',
-    //       label: 'Kategori',
-    //       value: event.category,
-    //     },
-    //     {
-    //       type: 'textarea',
-    //       placeholder: 'Beskrivelse',
-    //       value: event.description
-    //     },
-    //   ],
-    //   buttons: [
-    //     {
-    //       text: 'Annuller',
-    //       handler: () => {
-    //         console.log('nej');
-    //       },
-    //     },
-    //     {
-    //       text: 'Gem',
-    //       cssClass: 'alert-button-cancel',
-    //       handler: () => {
-    //         this.editEvent(event);
-    //       },
-    //     },
-    //   ],
-    // });
-    // await alert.present();
-  }
-
   editEvent(event: any): void {
 
   }
